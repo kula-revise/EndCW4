@@ -319,7 +319,7 @@
   .modal p { font-size: 1rem; line-height: 1.7; color: var(--ink); margin-bottom: 1.3rem; }
 
   .cover-line span{opacity:0;transition:opacity .5s ease}.cover-line span.vis{opacity:1}
-#kula-mode-toggle, .mode-toggle { min-height: 44px !important; padding-top: 0.6rem !important; padding-bottom: 0.6rem !important; box-sizing: border-box !important; }
+body { padding-bottom: 5.25rem !important; } #kula-mode-toggle, .mode-toggle { min-height: 44px !important; padding-top: 0.6rem !important; padding-bottom: 0.6rem !important; box-sizing: border-box !important; } /* kula: mobile tap targets. Every control a learner is expected to tap reaches 44px on the short axis at 360px. */ .evtoggle, .term-btn, .toggle-btn, #skip-btn, #chk, #cont, summary, details > summary { min-height: 44px !important; display: flex !important; align-items: center !important; box-sizing: border-box !important; } summary, details > summary { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; } #next-btn, #finish-btn, #cap-advance, #kdone-btn, #kretake-btn, #cont, #chk, #begin-btn, #back-btn, #redo-btn, #restart-btn, #skip-btn, .btn-primary, .btn-secondary, .btn-small { position: relative; z-index: 10000; }
 #next-btn, #begin-btn, #kdone-btn, #kretake-btn { min-height: 44px !important; }
     .essaynote{background:color-mix(in srgb, var(--flame) 10%, transparent);border:1px solid color-mix(in srgb, var(--flame) 34%, transparent);border-left:4px solid var(--flame);border-radius:7px;padding:1rem 1.15rem 1.05rem;}
     .essaynote-label{font-size:0.64rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink);font-weight:700;margin-bottom:0.5rem;}
@@ -334,11 +334,15 @@
     body:not(.bright) .btn-primary *, body:not(.bright) .btn-begin * { color: #FFFFFF !important; }
 
 </style>
+<style>/* kula: contrast corrections. Measured on the painted result in both modes, on every surface the control appears on. Colour only. */
+body:not(.bright) .toggle-btn { color: #E17C72 !important; }
+body.bright #skip-btn { color: #595853 !important; }
+</style>
 </head>
-<body>
+<body class="bright">
 <script>/* kula: LMS embed events. "completed" fires once, when the learner reaches the closing screen. "advance" fires from the final button. */
 (function(){var sentCompleted=false;window.kulaEmbed=function(ev){if(ev==="completed"){if(sentCompleted)return;sentCompleted=true;}try{window.parent.postMessage({type:"lms-embed-event",version:"1.0",payload:{event:ev}},"*");}catch(e){}};})();</script>
-<style>#kula-mode-toggle{position:fixed;bottom:1.1rem;right:1.1rem;z-index:9999;display:inline-flex;align-items:center;gap:.45em;padding:.48rem .82rem;border-radius:999px;font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;line-height:1;background:#221C16;color:#C9BBA8;border:1px solid rgba(255,245,235,.18);box-shadow:0 2px 9px rgba(0,0,0,.32);transition:transform .15s ease,box-shadow .15s ease}#kula-mode-toggle:hover{transform:translateY(-1px)}#kula-mode-toggle svg{width:15px;height:15px;display:block;flex:0 0 auto}body.bright #kula-mode-toggle{background:#F4F6F8;color:#525C66;border-color:rgba(23,33,43,.15);box-shadow:0 2px 8px rgba(0,0,0,.10)}</style><button id="kula-mode-toggle" type="button" onclick="kulaToggle()" aria-label="Switch between light and dark mode"><span id="kmt-icon"></span><span id="kmt-label"></span></button><script>(function(){var MOON="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z'/></svg>",SUN="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='4.2'/><path d='M12 1.6v2M12 20.4v2M3.6 12h-2M22.4 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4'/></svg>",K="kula-theme";function paint(){var d=!document.body.classList.contains("bright");var ic=document.getElementById("kmt-icon"),la=document.getElementById("kmt-label");if(ic)ic.innerHTML=d?SUN:MOON;if(la)la.textContent=d?"Light mode":"Dark mode"}window.kulaToggle=function(){document.body.classList.toggle("bright");try{localStorage.setItem(K,document.body.classList.contains("bright")?"light":"dark")}catch(e){}paint()};try{if(localStorage.getItem(K)==="light")document.body.classList.add("bright")}catch(e){}paint();})();</script>
+<style>#kula-mode-toggle{position:fixed;bottom:1.1rem;right:1.1rem;z-index:9999;display:inline-flex;align-items:center;gap:.45em;padding:.48rem .82rem;border-radius:999px;font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;-webkit-tap-highlight-color:transparent;line-height:1;background:#221C16;color:#C9BBA8;border:1px solid rgba(255,245,235,.18);box-shadow:0 2px 9px rgba(0,0,0,.32);transition:transform .15s ease,box-shadow .15s ease}#kula-mode-toggle:hover{transform:translateY(-1px)}#kula-mode-toggle svg{width:15px;height:15px;display:block;flex:0 0 auto}body.bright #kula-mode-toggle{background:#F4F6F8;color:#525C66;border-color:rgba(23,33,43,.15);box-shadow:0 2px 8px rgba(0,0,0,.10)}</style><button id="kula-mode-toggle" type="button" onclick="kulaToggle()" aria-label="Switch between light and dark mode"><span id="kmt-icon"></span><span id="kmt-label"></span></button><script>(function(){var MOON="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z'/></svg>",SUN="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='4.2'/><path d='M12 1.6v2M12 20.4v2M3.6 12h-2M22.4 12h-2M5.6 5.6 4.2 4.2M19.8 19.8l-1.4-1.4M18.4 5.6l1.4-1.4M4.2 19.8l1.4-1.4'/></svg>",K="kula-theme-2";function paint(){var d=!document.body.classList.contains("bright");var ic=document.getElementById("kmt-icon"),la=document.getElementById("kmt-label");if(ic)ic.innerHTML=d?SUN:MOON;if(la)la.textContent=d?"Light mode":"Dark mode"}window.kulaToggle=function(){document.body.classList.toggle("bright");try{localStorage.setItem(K,document.body.classList.contains("bright")?"light":"dark")}catch(e){}paint()};try{if(localStorage.getItem(K)==="dark")document.body.classList.remove("bright")}catch(e){}paint();})();</script>
 <div class="container">
 
   <div class="top-bar hidden" id="top-bar">
@@ -421,7 +425,7 @@ const FLOW = [
       "Yes, because they were both getting tired of the argument."
     ],
     "correct": 0,
-    "explanation": "{opt0}. One change can push two opposed sides the same way while meaning something different to each. Spotting that is worth a lot to you in History. It stops you writing as though everybody in a period experienced it the same way."
+    "explanation": "{opt0}. One change can push two opposed sides the same way while meaning something different to each. Spot that and you have something worth a lot in History. It stops you writing as though everybody in a period experienced it the same way."
   },
   {
     "type": "question",
@@ -492,7 +496,7 @@ const FLOW = [
       "Both. The settlement gave each side about half of what it wanted."
     ],
     "correct": 0,
-    "explanation": "{opt0}. De Klerk calculated that a movement cut off from Soviet support would negotiate from weakness. He was reading the international position and missing the domestic one. The ANC's strength was never mainly in its camps abroad. Keep this. It is the start of your counter-argument."
+    "explanation": "{opt0}. De Klerk calculated that a movement cut off from Soviet support would negotiate from weakness. He was reading the international position and missing the domestic one. The ANC's strength was never mainly in its camps abroad. Keep this. Start your counter-argument here, with what De Klerk misjudged."
   },
   {
     "type": "narrative",
@@ -539,7 +543,7 @@ const FLOW = [
       "The ANC forced the government to negotiate and Berlin made no difference."
     ],
     "correct": 0,
-    "explanation": "{opt0}. Dates discipline arguments. Talks from 1985, Harare in August, the Wall in November. The process was under way first, so the Cold War cannot have started it, which is what {opt1} misses. It can still have set the terms and the pace. {opt2} and {opt3} throw away half your evidence to keep a simpler line. A one-sided answer to this question cannot reach top marks."
+    "explanation": "{opt0}. Dates discipline arguments. Talks from 1985, Harare in August, the Wall in November. The process was under way first, so the Cold War cannot have started it, which is what {opt1} misses. It can still have set the terms and the pace. {opt2} and {opt3} ignore half your evidence to keep a simpler line. A one-sided answer to this question cannot reach top marks."
   },
   {
     "type": "question",
@@ -553,7 +557,7 @@ const FLOW = [
       "It caused the transition, but South Africans deserve most of the credit for it."
     ],
     "correct": 0,
-    "explanation": "{opt0} is a correction with a position in it. It says what the Cold War did and what it did not. {opt1} overcorrects and cannot explain February 1990. {opt2} is true but vague, and vagueness reads as hedging. {opt3} mixes a causal claim with a moral one. Those are different arguments, and running them together muddies your line."
+    "explanation": "{opt0} is a correction with a position in it. It says what the Cold War did and what it did not. {opt1} overcorrects and cannot explain February 1990. {opt2} is true but vague, and vagueness reads as hedging. {opt3} mixes a causal claim with a moral one. A claim about cause and a claim about right and wrong are different arguments. Run them together and your line stops being clear."
   },
   {
     "type": "question",
@@ -567,7 +571,7 @@ const FLOW = [
       "American sanctions were passed by Congress over a presidential veto in 1986."
     ],
     "correct": 0,
-    "explanation": "{opt0}. All four are usable. The debt crisis is strongest because it is measurable and dated well before 1989. It also hit the thing the government could not govern without. {opt1} and {opt2} show scale and desperation. {opt3} is powerful too, but it is an international pressure. Your claim here is about internal pressure, so the mismatch stands out."
+    "explanation": "{opt0}. All four are usable. The debt crisis is strongest because it is measurable and dated well before 1989. It also hit the thing the government could not govern without. {opt1} and {opt2} show scale and desperation. {opt3} is powerful too, but it is an international pressure. You are arguing about pressure from inside the country, so an international pressure does not fit."
   },
   {
     "type": "question",
