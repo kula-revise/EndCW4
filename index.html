@@ -171,6 +171,8 @@
   .toggle-btn { background: transparent; border: none; color: var(--flame); cursor: pointer; font-family: var(--sans); font-size: 0.82rem; text-decoration: underline; padding: 0.65rem 0 0; }
   .toggle-body { display: none; margin-top: 0.7rem; padding-top: 0.7rem; border-top: 1px dashed var(--hair); font-size: 0.9rem; color: var(--ink-soft); line-height: 1.65; }
   .toggle-body.open { display: block; }
+  .toggle-body p { font-size: inherit; line-height: inherit; color: inherit; margin: 0 0 0.75rem; }
+  .toggle-body p:last-child { margin-bottom: 0; }
   .evtag { display: inline-block; margin-top: 0.9rem; font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; padding: 0.24rem 0.6rem; }
   .evtag.home { background: var(--chipA-bg); color: var(--chipA-fg); }
   .evtag.ground { background: var(--chipB-bg); color: var(--chipB-fg); }
@@ -419,7 +421,7 @@ const FLOW = [
     "kind": "everyday",
     "q": "They moved in the same week. Does that mean the same thing changed for both of them?",
     "options": [
-      "No. One thing changed, and it hit them differently.",
+      "No. One thing changed, and it hit each of them differently.",
       "Yes. People in the same situation respond in the same way.",
       "No. They must have agreed the terms in advance somehow.",
       "Yes, because they were both getting tired of the argument."
@@ -435,7 +437,7 @@ const FLOW = [
     "options": [
       "A true account that will mislead you about the other side.",
       "The full explanation, since one of them had to move first.",
-      "Nothing useful, because people never know their own reasons.",
+      "Nothing useful, because people never really know their own reasons.",
       "A biased account that should be left out of the story."
     ],
     "correct": 0,
@@ -462,7 +464,7 @@ const FLOW = [
         "cls": "ground",
         "label": "Evidence &middot; The ANC in exile"
       },
-      "toggle": "Use this to keep two things straight. Losing Soviet support was a serious material blow to the ANC, which is why it belongs in your essay. It was not the loss of a controller, which is why the ANC's decision to negotiate cannot be explained as Moscow issuing an instruction. If you blur those two, you end up accidentally writing the total onslaught version of events."
+      "toggle": "<p>Shubin is doing two things at once. First he documents how much the Soviet Union gave the ANC and Umkhonto we Sizwe over decades. It ran to military training, weapons, money and political backing. Then he argues against the picture the National Party painted with those same facts. On his account the ANC was an ally Moscow supported, not an instrument Moscow directed. Strategy was decided by the ANC, and that includes the decision to negotiate.</p><p>Now the wording. An \"ally\" chooses to work with you and can walk away. An \"instrument\" is used by somebody else and cannot. The whole argument turns on that one distinction, so it is worth learning. Note also who is speaking. Shubin ran the African section of the Soviet Solidarity Committee, so he was part of the support he describes.</p><p>Use this to keep two things straight. Losing Soviet support was a serious material blow to the ANC, which is why it belongs in your essay. It was not the loss of a controller. So you cannot explain the ANC's decision to negotiate as Moscow issuing an instruction. Blur those two and you end up writing the total onslaught version of events by accident.</p>"
     }
   },
   {
@@ -528,7 +530,7 @@ const FLOW = [
         "cls": "exit",
         "label": "Evidence &middot; Before the Wall fell"
       },
-      "toggle": "The ANC set out its terms for a negotiated settlement in August 1989, eleven weeks before the Berlin Wall came down. Nelson Mandela had been in contact with the government since 1985 and met PW Botha in July 1989. Neither side started down this road because of Berlin. That is not an argument for ignoring the Cold War. It is the reason your answer has to say what the Cold War changed and what it did not."
+      "toggle": "<p>This is the ANC and the Organisation of African Unity setting out terms for a settlement. It comes in two halves. First, what the government must do before talks can start. It must release political prisoners and lift the bans on organisations and people. It must take troops out of the townships, end the state of emergency and repeal the laws restricting political activity. Second, what any new constitution must contain, including one person one vote in a united, non-racial and democratic South Africa. The OAU adopted it in August 1989, and you should note that the UN General Assembly endorsed it in December.</p><p>Now the wording. A \"climate for negotiation\" means conditions in which talks are possible at all. \"Repealing\" a law means cancelling it. \"Non-racial\" here means a state that does not sort people by race. That is a stronger claim than saying races should get along.</p><p>Now the date, because it carries the argument. The ANC set out these terms on 21 August 1989, eleven weeks before the Berlin Wall came down. Mandela had been in contact with the government since 1985 and met PW Botha in July 1989. Neither side started down this road because of Berlin. That is not an argument for ignoring the Cold War. It is the reason your answer has to say what the Cold War changed and what it did not.</p>"
     }
   },
   {
@@ -553,8 +555,8 @@ const FLOW = [
     "options": [
       "It changed the timing and the terms, but the pressure was already built.",
       "It had no effect at all, since internal resistance had made apartheid unworkable.",
-      "It was one of several international factors, alongside sanctions and diplomacy.",
-      "It caused the transition, but South Africans deserve most of the credit for it."
+      "It was one of several international factors, alongside sanctions and foreign diplomacy.",
+      "It caused the transition, but South Africans deserve most of the credit."
     ],
     "correct": 0,
     "explanation": "{opt0} is a correction with a position in it. It says what the Cold War did and what it did not. {opt1} overcorrects and cannot explain February 1990. {opt2} is true but vague, and vagueness reads as hedging. {opt3} mixes a causal claim with a moral one. A claim about cause and a claim about right and wrong are different arguments. Run them together and your line stops being clear."
